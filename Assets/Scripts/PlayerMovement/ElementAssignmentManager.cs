@@ -15,6 +15,8 @@
 
         private bool isAssigningElements = false;
         private Mechanic currentMechanic = Mechanic.Sprinting; // Track the current mechanic being assigned
+        
+        public WallRunning wallRunningComponent;
 
 
         private void Update()
@@ -162,14 +164,17 @@
             switch (sprintElement)
             {
                 case Element.Slime:
-                Debug.Log("Slime Sprint");
+                    Debug.Log("Slime Sprint");
+                    wallRunningComponent.enabled = true;
                     break;
                 case Element.Stone:
                     // Add weight or modify collision behavior
                     Debug.Log("Stone Sprint");
+                    wallRunningComponent.enabled = false;
                     break;
                 case Element.Air:
                     // No specific effect for sprinting
+                    wallRunningComponent.enabled = false;
                     break;
             }
 

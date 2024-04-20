@@ -12,6 +12,7 @@ public class PlayerMovementDashing : MonoBehaviour
 
     public float dashSpeed;
     public float dashSpeedChangeFactor;
+    public float WallrunSpeed;
 
     public float maxYSpeed;
 
@@ -58,12 +59,14 @@ public class PlayerMovementDashing : MonoBehaviour
     {
         walking,
         sprinting,
+        wallrunning,
         crouching,
         dashing,
         air
     }
 
     public bool dashing;
+    public bool wallrunning;
 
     private void Start()
     {
@@ -133,6 +136,12 @@ public class PlayerMovementDashing : MonoBehaviour
     private bool keepMomentum;
     private void StateHandler()
     {
+        // Mode - Wallrunning
+        if(wallrunning){
+            state = MovementState.wallrunning;
+            desiredMoveSpeed = WallrunSpeed;
+        }
+        
         // Mode - Dashing
         if (dashing)
         {
