@@ -1,8 +1,10 @@
+using System.Collections;
 using UnityEngine;
 
 public class ElementAssignmentManager : MonoBehaviour
 {
     public enum Element { None, Slime, Stone, Air }
+    private enum Mechanic { Sprinting, Dashing, Jumping }
 
     private Element sprintElement = Element.None;
     private Element dashElement = Element.None;
@@ -11,16 +13,41 @@ public class ElementAssignmentManager : MonoBehaviour
     private int assignedCombinations = 0;
     private const int maxCombinations = 3;
 
-    private enum Mechanic
-    {
-        Sprinting,
-        Dashing,
-        Jumping
-    }
-    
+    private bool isAssigningElements = false;
+    private Mechanic currentMechanic = Mechanic.Sprinting; // Track the current mechanic being assigned
+
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab)){
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (!isAssigningElements)
+            {
+                StartElementAssignment();
+            }
+            else
+            {
+                StopElementAssignment();
+            }
+        }
+    }
+        private void StartElementAssignment()
+    {
+        isAssigningElements = true;
+        StartCoroutine(ElementAssignmentRoutine());
+    }
+
+    private void StopElementAssignment()
+    {
+        isAssigningElements = false;
+        ResetElementAssignment();
+    }
+
+    private IEnumerator ElementAssignmentRoutine()
+    {
+        while (isAssigningElements && assignedCombinations < maxCombinations)
+        {
+            yield return null; // Wait for next frame to avoid freezing the game
             ShowElementAssignmentScreen();
         }
     }
@@ -29,53 +56,40 @@ public class ElementAssignmentManager : MonoBehaviour
     {
         // Display UI for element assignment (e.g., prompts and keys)
         // You can use Unity's UI system (Canvas, Text, Buttons, etc.) to create the UI elements.
-        // For example:
-        // - Show a panel with text instructions ("Assign elements to mechanics:")
-        // - Display keys (Q, E, R) next to each mechanic (sprinting, dashing, jumping)
-        
+        // Capture player input to assign elements for the current mechanic
+        if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.R))
+        {
+            // Assign element based on the current mechanic
+            Element assignedElement = Element.None;
 
-        // Capture player input (Q, E, R) to assign elements
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            AssignElement(Element.Slime, Mechanic.Sprinting);
+            if (Input.GetKeyDown(KeyCode.Q))
+                assignedElement = Element.Slime;
+            else if (Input.GetKeyDown(KeyCode.E))
+                assignedElement = Element.Stone;
+            else if (Input.GetKeyDown(KeyCode.R))
+                assignedElement = Element.Air;
+                Debug.Log("It werks");
+
+            AssignElement(assignedElement, currentMechanic);
+
+            // Move to the next mechanic
+            currentMechanic = GetNextMechanic(currentMechanic);
         }
-        else if (Input.GetKeyDown(KeyCode.E))
+    }
+    // Method to get the next mechanic in sequence
+    private Mechanic GetNextMechanic(Mechanic current)
+    {
+        switch (current)
         {
-            AssignElement(Element.Stone, Mechanic.Sprinting);
+            case Mechanic.Sprinting:
+                return Mechanic.Jumping;
+            case Mechanic.Jumping:
+                return Mechanic.Dashing;
+            case Mechanic.Dashing:
+                return Mechanic.Sprinting; // Go back to sprinting to repeat the cycle
+            default:
+                return Mechanic.Sprinting;
         }
-        else if (Input.GetKeyDown(KeyCode.R))
-        {
-            AssignElement(Element.Air, Mechanic.Sprinting);
-        }
-        // Repeat similar logic for dashing and jumping
-        
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            AssignElement(Element.Slime, Mechanic.Jumping);
-        }
-        else if (Input.GetKeyDown(KeyCode.E))
-        {
-            AssignElement(Element.Stone, Mechanic.Jumping);
-        }
-        else if (Input.GetKeyDown(KeyCode.R))
-        {
-            AssignElement(Element.Air, Mechanic.Jumping);
-        }
-        
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            AssignElement(Element.Slime, Mechanic.Dashing);
-        }
-        else if (Input.GetKeyDown(KeyCode.E))
-        {
-            AssignElement(Element.Stone, Mechanic.Dashing);
-        }
-        else if (Input.GetKeyDown(KeyCode.R))
-        {
-            AssignElement(Element.Air, Mechanic.Dashing);
-        }
-        // You can also update the UI dynamically to show which elements are already assigned.
-        // For example, change the color of assigned elements or display checkmarks next to them.
     }
 
     // Called when the player assigns an element
@@ -99,17 +113,32 @@ public class ElementAssignmentManager : MonoBehaviour
         {
             case Mechanic.Sprinting:
                 sprintElement = element;
+                Debug.Log(element.ToString() + " assigned to Sprinting.");
                 break;
             case Mechanic.Dashing:
                 dashElement = element;
+                Debug.Log(element.ToString() + " assigned to Dashing.");
                 break;
             case Mechanic.Jumping:
                 jumpElement = element;
+                Debug.Log(element.ToString() + " assigned to Jumping.");
                 break;
         }
 
         assignedCombinations++;
-        ApplyElementEffects();
+        if (assignedCombinations >= maxCombinations)
+        {
+            StopElementAssignment();
+        }
+    }
+
+    // Reset assigned elements and combinations
+    private void ResetElementAssignment()
+    {
+        sprintElement = Element.None;
+        dashElement = Element.None;
+        jumpElement = Element.None;
+        assignedCombinations = 0;
     }
 
     // Check if an element is already assigned to any mechanic
@@ -117,6 +146,8 @@ public class ElementAssignmentManager : MonoBehaviour
     {
         return sprintElement == element || dashElement == element || jumpElement == element;
     }
+
+
 
     // Apply element effects to mechanics based on player's choices
     private void ApplyElementEffects()
