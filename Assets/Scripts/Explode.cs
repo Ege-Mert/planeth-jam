@@ -22,7 +22,7 @@ public class Explode : MonoBehaviour
             foreach (Transform child in transform)
             {
              
-                child.GetComponent<Rigidbody>().AddExplosionForce(Random.Range(75f, 175f), transform.position, Random.Range(80f,100f));
+                child.GetComponent<Rigidbody>().AddExplosionForce(Random.Range(750f, 1750f), transform.position, Random.Range(80f,100f));
                 Destroy(gameObject,3.5f);
             }
         }

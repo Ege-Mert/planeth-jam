@@ -8741,6 +8741,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8917703946959959745, guid: af941bff35a2db44281dc0cdd2721e98,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: af941bff35a2db44281dc0cdd2721e98,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8791,15 +8796,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6554458113972422046, guid: af941bff35a2db44281dc0cdd2721e98,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -5477749408508380018, guid: af941bff35a2db44281dc0cdd2721e98,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 17.92
       objectReference: {fileID: 0}
+    - target: {fileID: -2995828229661691052, guid: af941bff35a2db44281dc0cdd2721e98,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: af941bff35a2db44281dc0cdd2721e98,
         type: 3}
       propertyPath: m_Name
       value: breakablewalltest (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af941bff35a2db44281dc0cdd2721e98,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3021780583470790795, guid: af941bff35a2db44281dc0cdd2721e98,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8704484798943859418, guid: af941bff35a2db44281dc0cdd2721e98,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -70386,6 +70416,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8917703946959959745, guid: af941bff35a2db44281dc0cdd2721e98,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: af941bff35a2db44281dc0cdd2721e98,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -70436,15 +70471,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6554458113972422046, guid: af941bff35a2db44281dc0cdd2721e98,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: -5477749408508380018, guid: af941bff35a2db44281dc0cdd2721e98,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 17.92
       objectReference: {fileID: 0}
+    - target: {fileID: -2995828229661691052, guid: af941bff35a2db44281dc0cdd2721e98,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: af941bff35a2db44281dc0cdd2721e98,
         type: 3}
       propertyPath: m_Name
       value: breakablewalltest
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af941bff35a2db44281dc0cdd2721e98,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3021780583470790795, guid: af941bff35a2db44281dc0cdd2721e98,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8704484798943859418, guid: af941bff35a2db44281dc0cdd2721e98,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

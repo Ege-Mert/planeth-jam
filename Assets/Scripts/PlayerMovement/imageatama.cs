@@ -67,7 +67,7 @@ public class ImageController : MonoBehaviour
         if (currentComponentIndex == imageComponents.Length)
         {
             Debug.Log("Son resim atandı");
-            Invoke("ClearSprites", 0.5f);
+            Invoke("ClearSprites", 0.01f);
             
         }
     }
