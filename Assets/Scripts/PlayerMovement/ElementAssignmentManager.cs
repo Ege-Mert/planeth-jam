@@ -177,7 +177,7 @@
             switch (sprintElement)
             {
                 case Element.Slime:
-                    pmd.sprintSpeed = 7f;
+                    pmd.sprintSpeed = 8f;
                     wallRunningComponent.enabled = true;
                     break;
                 case Element.Stone:
@@ -186,7 +186,7 @@
                     break;
                 case Element.Air:
                     wallRunningComponent.enabled = false;
-                    pmd.sprintSpeed = 10.5f;
+                    pmd.sprintSpeed = 14f;
                     break;
             }
 
@@ -199,7 +199,7 @@
                 
                 case Element.Stone:
                     Player.tag = "Player";
-                    pmd.dashSpeed = 20;
+                    pmd.dashSpeed = 10;
                     break;
                
                 case Element.Air:
@@ -213,7 +213,7 @@
                 case Element.Slime:
                     Debug.Log("o");
                     rb.mass = 1f;
-                    pmd.jumpForce = 36;
+                    pmd.jumpForce = 18;
                     break;
                 case Element.Stone:
                     Debug.Log("p");
@@ -224,8 +224,8 @@
                     break;
                 case Element.Air:
                     Debug.Log("u");
-                    AzaltYercekimi(0.3f);
-                    pmd.jumpForce = 12;
+                    AzaltYercekimi(0.5f);
+                    pmd.jumpForce = 7;
                     break;
             }
         }

@@ -6,22 +6,23 @@ using Random = UnityEngine.Random;
 
 public class Explode : MonoBehaviour
 {
-     public GameObject[] astroit;
-   
+    public GameObject[] breakablewalltest;
+    [SerializeField]private BoxCollider boxCollider;
+
 
     private void OnCollisionEnter(Collision other)
     {
         if (other.transform.CompareTag("Player"))
         {
-            
-            for (int i = 0; i < astroit.Length; i++)
+            boxCollider.enabled = false;
+            for (int i = 0; i < breakablewalltest.Length; i++)
             {
-                astroit[i].GetComponent<Rigidbody>().useGravity = true;
+                breakablewalltest[i].GetComponent<Rigidbody>().useGravity = true;
             }
             foreach (Transform child in transform)
             {
              
-                child.GetComponent<Rigidbody>().AddExplosionForce(Random.Range(75f, 175f), transform.position, Random.Range(8f,10f));
+                child.GetComponent<Rigidbody>().AddExplosionForce(Random.Range(75f, 175f), transform.position, Random.Range(80f,100f));
                 Destroy(gameObject,3.5f);
             }
         }
