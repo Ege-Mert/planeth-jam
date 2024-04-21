@@ -1,3 +1,4 @@
+    using System;
     using System.Collections;
     using UnityEngine;
 
@@ -17,7 +18,16 @@
         private Mechanic currentMechanic = Mechanic.Sprinting; // Track the current mechanic being assigned
         
         public WallRunning wallRunningComponent;
+        public PlayerMovementDashing pmd;
+        public GameObject Player;
+        public Rigidbody rb;
 
+        private void Start()
+        {
+            
+            pmd = GetComponent<PlayerMovementDashing>();
+            Debug.Log(pmd.jumpForce);
+        }
 
         private void Update()
         {
@@ -32,6 +42,7 @@
                     StopElementAssignment();
                 }
             }
+            
         }
             private void StartElementAssignment()
         {
@@ -143,6 +154,7 @@
             dashElement = Element.None;
             jumpElement = Element.None;
             assignedCombinations = 0;
+            
             Debug.Log("Reseted");
         }
 
@@ -159,56 +171,74 @@
         {
             // Get the player's Rigidbody component (assuming your player has one)
             Rigidbody playerRigidbody = GetComponent<Rigidbody>();
+                
 
             // Apply effects based on assigned elements
             switch (sprintElement)
             {
                 case Element.Slime:
-                    Debug.Log("Slime Sprint");
+                    pmd.sprintSpeed = 7f;
                     wallRunningComponent.enabled = true;
                     break;
                 case Element.Stone:
-                    // Add weight or modify collision behavior
-                    Debug.Log("Stone Sprint");
+                    pmd.sprintSpeed = 2.1f;
                     wallRunningComponent.enabled = false;
                     break;
                 case Element.Air:
-                    // No specific effect for sprinting
                     wallRunningComponent.enabled = false;
+                    pmd.sprintSpeed = 10.5f;
                     break;
             }
 
             switch (dashElement)
             {
                 case Element.Slime:
-                    // No specific effect for dashing
+                    Player.tag = "Tag1";
+                    pmd.dashSpeed = 20;
                     break;
+                
                 case Element.Stone:
-                    // Modify dash behavior (e.g., disable dashing temporarily)
-                    // Example: playerCanDash = false;
+                    Player.tag = "Player";
+                    pmd.dashSpeed = 20;
                     break;
+               
                 case Element.Air:
-                    // Modify dash behavior (e.g., increase dash distance)
-                    // Example: dashDistance *= 1.5f;
+                    Player.tag = "Tag1";
+                    pmd.dashSpeed = 30;
                     break;
             }
 
             switch (jumpElement)
             {
                 case Element.Slime:
-                    // Modify jump height or air control
-                    playerRigidbody.AddForce(Vector3.up * 10f, ForceMode.Impulse); // Example: Increase jump force
+                    Debug.Log("o");
+                    rb.mass = 1f;
+                    pmd.jumpForce = 36;
                     break;
                 case Element.Stone:
+                    Debug.Log("p");
                     // No specific effect for jumping
+                    rb.mass = 1f;
+                    pmd.jumpForce = 6;
+                    
                     break;
                 case Element.Air:
-                    // Modify jump behavior (e.g., double jump)
-                    // Example: canDoubleJump = true;
+                    Debug.Log("u");
+                    AzaltYercekimi(0.3f);
+                    pmd.jumpForce = 12;
                     break;
             }
         }
-
-        // Additional methods for handling UI, input, and gameplay mechanics
-        // ...
+        
+        public void AzaltYercekimi( float azaltmaMiktari)
+        {
+            Debug.Log("sex");
+          
+                Debug.Log("Sex2"); 
+                // Karakterin kütlesini azaltarak yerçekimini etkile
+                // Karakterin kütlesini azaltarak yerçekimini etkiles
+                rb.mass *= azaltmaMiktari; // Karakterin kütlesini azalt
+            
+            
+        }
     }

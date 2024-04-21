@@ -12,6 +12,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/Desktop/a.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/PlayerMovement.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/PlayerMovement/DesicionElements.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
@@ -93,6 +94,10 @@
       <workItem from="1713570450694" duration="159000" />
       <workItem from="1713608719068" duration="1948000" />
       <workItem from="1713620839757" duration="9330000" />
+      <workItem from="1713656878645" duration="703000" />
+      <workItem from="1713658422627" duration="41000" />
+      <workItem from="1713664942679" duration="2849000" />
+      <workItem from="1713669308619" duration="5659000" />
     </task>
     <servers />
   </component>

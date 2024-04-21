@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ledge
+  - Tag1
   layers:
   - Default
   - TransparentFX
@@ -13,8 +14,8 @@ TagManager:
   - Water
   - UI
   - whatIsPlayer
-  - 
-  - 
+  - test
+  - astroids
   - whatIsWall
   - whatIsGround
   - whatIsLedge

@@ -46,13 +46,14 @@ public class PlayerMovementDashing : MonoBehaviour
 
 
     public Transform orientation;
+    public ElementAssignmentManager eam;
 
     float horizontalInput;
     float verticalInput;
 
     Vector3 moveDirection;
 
-    Rigidbody rb;
+     public Rigidbody rb;
 
     public MovementState state;
     public enum MovementState
@@ -72,7 +73,7 @@ public class PlayerMovementDashing : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
-
+        eam = GetComponent<ElementAssignmentManager>();
         readyToJump = true;
 
         startYScale = transform.localScale.y;
@@ -94,6 +95,7 @@ public class PlayerMovementDashing : MonoBehaviour
             rb.drag = 0;
 
         TextStuff();
+        
     }
 
     private void FixedUpdate()
@@ -332,6 +334,7 @@ public class PlayerMovementDashing : MonoBehaviour
         //text_ySpeed.SetText("YSpeed: " + Round(yVel, 0) + " / " + yMax);
 
         text_mode.SetText(state.ToString());
+        
     }
 
     public static float Round(float value, int digits)
@@ -339,4 +342,7 @@ public class PlayerMovementDashing : MonoBehaviour
         float mult = Mathf.Pow(10.0f, (float)digits);
         return Mathf.Round(value * mult) / mult;
     }
+    
+    //Yerçekimi azaltma 
+    
 }

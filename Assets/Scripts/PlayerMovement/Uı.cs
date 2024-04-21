@@ -5,7 +5,7 @@ using UnityEngine;
 public class Uı : MonoBehaviour
 {
     public GameObject canvas; // Canvas nesnesini bu alandan ata
-
+        
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab)) // Tab tuşu kontrolü
