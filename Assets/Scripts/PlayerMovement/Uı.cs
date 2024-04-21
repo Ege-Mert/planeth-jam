@@ -10,7 +10,7 @@ public class Uı : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab)) // Tab tuşu kontrolü
         {
-            canvas.SetActive(true);// Canvas'i açıp/kapatan fonksiyonu çağır
+            canvas.SetActive(!canvas.activeSelf);;// Canvas'i açıp/kapatan fonksiyonu çağır
         }
     }
 
